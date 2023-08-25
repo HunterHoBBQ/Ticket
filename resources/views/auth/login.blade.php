@@ -11,6 +11,11 @@
                 <div class="card">
                     <div class="card-header">{{ __('Login') }}</div>
                     <div class="card-body">
+                        @if(session('error'))
+                            <div class="alert alert-danger">
+                                {{ session('error') }}
+                            </div>
+                        @endif
                         <form method="POST" action="{{ route('user.transactions') }}">
                             @csrf
 
@@ -29,10 +34,13 @@
                                     {{ __('Show Transactions') }}
                                 </button>
                             </div>
-                            1. bell.okuneva@example.net <br/>
-                            2. gorczany.adolfo@example.com <br/>
-                            3. jaime18@example.com <br/>
-                            *. skiles.era@example.org <br/>
+                            <p class="mt-3">
+                                Valid email examples for testing:<br/>
+                                1. bell.okuneva@example.net<br/>
+                                2. gorczany.adolfo@example.com<br/>
+                                3. jaime18@example.com<br/>
+                                4. skiles.era@example.org
+                            </p>
                         </form>
                     </div>
                 </div>

@@ -10,13 +10,26 @@ Route::get('/', [TicketController::class, 'getAllPublicTicketTransactions']);
 Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('login', [LoginController::class, 'login']);
 Route::post('/', [TicketController::class, 'getAllPublicTicketTransactions'])->name('logout');
-// Route::get('user/details', [TicketController::class, 'userDetails'])->name('user.details')->middleware('auth');
 
 Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('register', [RegisterController::class, 'register']);
 
+
 use App\Http\Controllers\UserTransactionController;
+Route::post('user/transactions', [UserTransactionController::class, 'userTransactions'])
+    ->name('user.transactions');
 
-Route::post('user/transactions', [UserTransactionController::class, 'userTransactions'])->name('user.transactions');
 
+use App\Http\Controllers\TransactionController;
 
+Route::get('add/transaction/{user_id}', [TransactionController::class, 'showAddTransactionForm'])
+    ->name('add.transaction.form');
+Route::post('add-transaction', [TransactionController::class, 'addTransaction'])
+    ->name('add.transaction');
+
+Route::get('user/transactions/{user_id}', [TransactionController::class, 'showUserTransactions'])
+    ->name('user.transaction');
+
+    Route::get('/', [TicketController::class, 'getAllPublicTicketTransactions'])->name('home');
+
+    Route::get('/export-pdf', 'App\Http\Controllers\TransactionController@exportToPDF')->name('export.pdf');

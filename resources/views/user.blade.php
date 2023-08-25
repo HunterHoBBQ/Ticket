@@ -10,6 +10,9 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
+                    <a href="{{ route('add.transaction.form', ['user_id' => $user_id]) }}" class="btn btn-success">Buy Ticket</a>
+                </li>
+                <li class="nav-item">
                     <a href="{{ route('logout') }}" class="btn btn-danger">Log Out</a>
                 </li>
             </ul>

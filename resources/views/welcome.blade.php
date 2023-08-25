@@ -7,8 +7,16 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">Ticket System</a>
+        @if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a href="{{ route('export.pdf') }}" class="btn btn-info">Export to PDF</a>
+                </li>
                 <li class="nav-item">
                     {{-- <a href="{{ route('register') }}" class="btn btn-primary">Sign Up</a> --}}
                 </li>
